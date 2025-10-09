@@ -183,32 +183,43 @@ if (video && typeof video.play === "function") {
     const nodes = Array.from(tl.querySelectorAll(".tl-node"));
     if (!rail || nodes.length === 0) return;
 
+    const isMobile = window.matchMedia("(max-width: 900px)").matches;
     const tlRect = tl.getBoundingClientRect();
-    const centers = nodes.map(n => {
-      const dot = n.querySelector(".tl-dot");
-      const r = dot.getBoundingClientRect();
-      return (r.top + r.bottom) / 2 - tlRect.top;
-    }).sort((a,b)=>a-b);
 
-    const first = centers[0];
-    const last = centers[centers.length - 1];
+    const firstDot = nodes[0].querySelector(".tl-dot")?.getBoundingClientRect();
+    const firstBadge = tl.querySelector(".tl-year-badge")?.getBoundingClientRect();
+    let start = firstDot ? ((firstDot.top + firstDot.bottom)/2 - tlRect.top) - 8 : 24;
+    if (firstBadge) start = (firstBadge.bottom - tlRect.top) + (isMobile ? 12 : 6);
 
-    const firstBadge = tl.querySelector(".tl-year-badge");
-    let start = first - 8;
-    if (firstBadge) {
-      const b = firstBadge.getBoundingClientRect();
-      start = (b.bottom - tlRect.top) + 6;
+    let endY;
+    if (isMobile) {
+      const lastNode = nodes[nodes.length - 1];
+      const lastDotRect = lastNode.querySelector(".tl-dot")?.getBoundingClientRect();
+      const lastCenter = lastDotRect ? ((lastDotRect.top + lastDotRect.bottom)/2) - tlRect.top : 0;
+      endY = Math.max(0, lastCenter - 6);
+
+      nodes.forEach(node => {
+        const dot = node.querySelector(".tl-dot")?.getBoundingClientRect();
+        const card = node.querySelector(".tl-card")?.getBoundingClientRect();
+        if (!dot || !card) return;
+        const dotCenter = dot.top + dot.height/2;
+        const h = Math.max(8, Math.round(card.top - dotCenter));
+        node.style.setProperty("--connector-h", h + "px");
+      });
+    } else {
+      const lastDot = nodes[nodes.length - 1].querySelector(".tl-dot")?.getBoundingClientRect();
+      const lastCenter = lastDot ? (lastDot.top + lastDot.bottom)/2 - tlRect.top : 0;
+      endY = lastCenter - 8;
     }
 
-    const endOffset = 8;
-    const height = Math.max(0, (last - endOffset) - start);
-
+    const height = Math.max(0, endY - start);
     rail.style.setProperty("--rail-top", start + "px");
     rail.style.setProperty("--rail-height", height + "px");
   }
 
   const onResize = () => requestAnimationFrame(measure);
   window.addEventListener("resize", onResize, { passive:true });
+  window.addEventListener("orientationchange", onResize, { passive:true });
   window.addEventListener("load", measure);
   measure();
 })();
