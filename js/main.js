@@ -75,12 +75,36 @@ if (video && typeof video.play === "function") {
     let startedAt = 0;
 
     function measure(){ w = viewport.clientWidth; }
+
+    function clearTimers(){
+      if (autoTimer){ clearTimeout(autoTimer); autoTimer = null; }
+      if (rafId){ cancelAnimationFrame(rafId); rafId = null; }
+    }
+
+    function resetAuto(){
+      if (SINGLE) return;
+      clearTimers();
+      startedAt = performance.now();
+      if (bar) bar.style.width = "0%";
+      rafId = requestAnimationFrame(drawProgress);
+      autoTimer = setTimeout(() => { go(i + 1); }, DURATION);
+    }
+
+    function drawProgress(){
+      const t = performance.now() - startedAt;
+      const p = Math.min(1, t / DURATION);
+      if (bar) bar.style.width = (p * 100) + "%";
+      if (p < 1) rafId = requestAnimationFrame(drawProgress);
+    }
+
     function go(n, opts={}){
-      i = (n + slides.length) % slides.length;
+      const newIndex = (n + slides.length) % slides.length;
+      const changed = newIndex !== i;
+      i = newIndex;
       track.style.transition = opts.noAnim ? "none" : "";
       track.style.transform = `translateX(${-i * 100}%)`;
       if (opts.noAnim) requestAnimationFrame(() => track.style.transition = "");
-      if (!SINGLE) restartAuto();
+      if (!SINGLE && changed) resetAuto();
     }
 
     prev?.addEventListener("click", e => { e.stopPropagation(); go(i - 1); });
@@ -94,7 +118,6 @@ if (video && typeof video.play === "function") {
       deltaX = 0;
       viewport.setPointerCapture(e.pointerId);
       track.style.transition = "none";
-      if (!SINGLE) stopAuto();
     });
     viewport.addEventListener("pointermove", e => {
       if (!dragging) return;
@@ -107,51 +130,17 @@ if (video && typeof video.play === "function") {
       track.style.transition = "";
       const threshold = Math.max(60, w * 0.12);
       if (Math.abs(deltaX) > threshold) go(i + (deltaX < 0 ? 1 : -1));
-      else go(i);
+      else track.style.transform = `translateX(${-i * 100}%)`;
       deltaX = 0;
     }
     viewport.addEventListener("pointerup", endDrag);
     viewport.addEventListener("pointercancel", endDrag);
 
-    if (!SINGLE){
-      root.addEventListener("mouseenter", stopAuto);
-      root.addEventListener("mouseleave", startAuto);
-    }
-
-    document.addEventListener("visibilitychange", () => {
-      if (SINGLE) return;
-      if (document.hidden) stopAuto();
-      else startAuto();
-    });
-
-    function drawProgress(){
-      const t = performance.now() - startedAt;
-      const p = Math.min(1, t / DURATION);
-      bar.style.width = (p * 100) + "%";
-      if (p < 1) rafId = requestAnimationFrame(drawProgress);
-    }
-    function startAuto(){
-      if (SINGLE || autoTimer) return;
-      startedAt = performance.now();
-      bar.style.width = "0%";
-      rafId = requestAnimationFrame(drawProgress);
-      autoTimer = setTimeout(() => { go(i + 1); }, DURATION);
-    }
-    function stopAuto(){
-      if (autoTimer){ clearTimeout(autoTimer); autoTimer = null; }
-      if (rafId){ cancelAnimationFrame(rafId); rafId = null; }
-    }
-    function restartAuto(){
-      if (SINGLE) return;
-      stopAuto();
-      setTimeout(startAuto, 50);
-    }
-
     const ro = new ResizeObserver(() => { measure(); go(i, { noAnim:true }); });
     ro.observe(viewport);
     measure();
     go(0, { noAnim:true });
-    if (!SINGLE) startAuto();
+    if (!SINGLE) resetAuto();
   }
 })();
 
