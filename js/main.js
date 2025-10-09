@@ -229,9 +229,28 @@ if (video && typeof video.play === "function") {
   const bodyEl = document.getElementById("note-modal-body");
   if (!modal || !bodyEl) return;
 
+  let savedScrollY = 0;
+
+  function openModal(){
+    modal.classList.add("show");
+    savedScrollY = window.scrollY || window.pageYOffset || 0;
+    document.documentElement.classList.add("modal-open");
+    document.body.classList.add("modal-open");
+    document.body.style.top = `-${savedScrollY}px`;
+  }
+
+  function closeModal(){
+    modal.classList.remove("show");
+    document.documentElement.classList.remove("modal-open");
+    document.body.classList.remove("modal-open");
+    document.body.style.top = "";
+    window.scrollTo(0, savedScrollY);
+  }
+
   document.addEventListener("click", async (e)=>{
     const a = e.target.closest('a[href*="patchnotes/index.html?id="]');
     if (!a) return;
+
     e.preventDefault();
 
     const url = new URL(a.href, location.origin);
@@ -239,8 +258,7 @@ if (video && typeof video.play === "function") {
     if (!id) return;
 
     bodyEl.innerHTML = '<p class="muted">Loading…</p>';
-    modal.classList.add("show");
-    document.body.classList.add("modal-open");
+    openModal();
 
     try{
       const tryTxt = await fetch(`patchnotes/notes/${id}.txt`, { cache:"no-store" });
@@ -263,17 +281,15 @@ if (video && typeof video.play === "function") {
     }
   });
 
-  function closeModal(){
-    modal.classList.remove("show");
-    document.body.classList.remove("modal-open");
+  function isModalCloseTarget(el){
+    return el?.id === "note-close" || el?.classList?.contains("modal-close");
   }
 
   document.addEventListener("click", (e)=>{
-    if (e.target.id === "note-close" || e.target.classList.contains("modal-close")) closeModal();
+    if (isModalCloseTarget(e.target)) closeModal();
   });
 
   modal.addEventListener("click", (e)=>{ if (e.target === modal) closeModal(); });
-
   window.addEventListener("popstate", ()=> closeModal());
 
   function escapeHTML(s){
