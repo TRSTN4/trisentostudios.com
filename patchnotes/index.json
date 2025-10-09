@@ -1,0 +1,13 @@
+{
+  "notes": [
+    { "id": "farsight-1.2", "title": "FARSIGHT v1.2 - Secrets & Stories", "date": "2024-01-20" },
+    { "id": "farsight-1.1.2", "title": "FARSIGHT v1.1.2 - Hotfixes", "date": "2024-01-04" },
+    { "id": "farsight-1.1.1", "title": "FARSIGHT v1.1.1 - Hotfixes", "date": "2024-01-03" },
+    { "id": "farsight-1.1", "title": "FARSIGHT v1.1 - CO-OP", "date": "2023-12-31" },
+    { "id": "farsight-1.0.2", "title": "FARSIGHT v1.0.2 - Hotfixes", "date": "2023-11-20" },
+    { "id": "farsight-1.0.1", "title": "FARSIGHT v1.0.1 - Tutorial", "date": "2023-10-30" },
+    { "id": "farsight-1.0", "title": "FARSIGHT v1.0 - Release", "date": "2023-10-27" },
+    { "id": "lootrunners-1.0", "title": "Loot Runners v1.0 - Release", "date": "2023-04-20" },
+    { "id": "dreamplots-1.0", "title": "Dream Plots v1.0 - Release", "date": "2023-07-01" }
+  ]
+}

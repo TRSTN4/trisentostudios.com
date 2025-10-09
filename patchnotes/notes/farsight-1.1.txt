@@ -1,0 +1,23 @@
+# FARSIGHT v1.1 — CO-OP
+@date: 2023-12-31
+
+## Enhancements
+- Introduces co-op mode (multiplayer).
+- Backend improvements for performance & scalability.
+- Stalkers moved to client-side for smoother interactions.
+- Refined first-person tool equip animation.
+
+## Design & UI
+- Clearer “thoughts” text cloud.
+- New lobby replaces old hub/menu with queue system.
+- Text notifications on objective completion & inventory changes.
+- Instruction text for exiting read newspaper/note GUI.
+
+## New Gamepass — Early VIP
+- EV chat tag for Early VIPs.
+- Early access to updates.
+- More perks coming over time.
+
+## Bug Fixes
+- Prevented bypassing barrier to radioactive area.
+- Fixed chat not showing correct player tags.

@@ -1,0 +1,336 @@
+"use strict";
+
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+const nav = document.getElementById("nav");
+const onScroll = () => {
+  if (window.scrollY > 10) nav?.classList.add("scrolled");
+  else nav?.classList.remove("scrolled");
+};
+onScroll();
+window.addEventListener("scroll", onScroll, { passive: true });
+
+const toggle = document.getElementById("menuToggle");
+const links = document.getElementById("links");
+if (toggle && links) {
+  toggle.addEventListener("click", () => {
+    const isOpen = links.classList.toggle("show");
+    toggle.setAttribute("aria-expanded", String(isOpen));
+  });
+}
+
+function smoothScrollTo(targetId) {
+  const el = document.querySelector(targetId);
+  if (!el) return;
+  const navHeight = nav?.offsetHeight || 70;
+  const y = el.getBoundingClientRect().top + window.pageYOffset - (navHeight + 10);
+  window.scrollTo({ top: y, behavior: "smooth" });
+}
+document.querySelectorAll('a.scroll[href^="#"]').forEach(a => {
+  a.addEventListener("click", e => {
+    e.preventDefault();
+    const href = a.getAttribute("href") || "#";
+    smoothScrollTo(href);
+    if (links?.classList.contains("show")) links.classList.remove("show");
+  });
+});
+
+const video = document.getElementById("bgVideo");
+if (video && typeof video.play === "function") {
+  const p = video.play();
+  if (p && typeof p.then === "function") p.catch(() => {});
+}
+
+(function initGalleries(){
+  const galleries = Array.from(document.querySelectorAll(".gallery"));
+  galleries.forEach(setupGallery);
+
+  function setupGallery(root){
+    const viewport = root.querySelector(".gal-viewport");
+    const track = root.querySelector(".gal-track");
+    const slides = Array.from(root.querySelectorAll(".gal-slide"));
+    const prev = root.querySelector(".gal-prev");
+    const next = root.querySelector(".gal-next");
+    if (!viewport || !track || slides.length === 0) return;
+
+    const SINGLE = slides.length === 1;
+    if (SINGLE) root.classList.add("is-single");
+
+    let progress, bar;
+    if (!SINGLE){
+      progress = document.createElement("div");
+      progress.className = "gal-progress";
+      bar = document.createElement("div");
+      bar.className = "gal-progress-bar";
+      progress.appendChild(bar);
+      root.appendChild(progress);
+    }
+
+    let i = 0;
+    let w = 0;
+    let autoTimer = null;
+    let rafId = null;
+    const DURATION = 5000;
+    let startedAt = 0;
+
+    function measure(){ w = viewport.clientWidth; }
+    function go(n, opts={}){
+      i = (n + slides.length) % slides.length;
+      track.style.transition = opts.noAnim ? "none" : "";
+      track.style.transform = `translateX(${-i * 100}%)`;
+      if (opts.noAnim) requestAnimationFrame(() => track.style.transition = "");
+      if (!SINGLE) restartAuto();
+    }
+
+    prev?.addEventListener("click", e => { e.stopPropagation(); go(i - 1); });
+    next?.addEventListener("click", e => { e.stopPropagation(); go(i + 1); });
+
+    let startX = 0, deltaX = 0, dragging = false;
+    viewport.addEventListener("pointerdown", e => {
+      if (e.button !== 0) return;
+      dragging = true;
+      startX = e.clientX;
+      deltaX = 0;
+      viewport.setPointerCapture(e.pointerId);
+      track.style.transition = "none";
+      if (!SINGLE) stopAuto();
+    });
+    viewport.addEventListener("pointermove", e => {
+      if (!dragging) return;
+      deltaX = e.clientX - startX;
+      track.style.transform = `translateX(calc(${-i * 100}% + ${deltaX}px))`;
+    });
+    function endDrag(){
+      if (!dragging) return;
+      dragging = false;
+      track.style.transition = "";
+      const threshold = Math.max(60, w * 0.12);
+      if (Math.abs(deltaX) > threshold) go(i + (deltaX < 0 ? 1 : -1));
+      else go(i);
+      deltaX = 0;
+    }
+    viewport.addEventListener("pointerup", endDrag);
+    viewport.addEventListener("pointercancel", endDrag);
+
+    if (!SINGLE){
+      root.addEventListener("mouseenter", stopAuto);
+      root.addEventListener("mouseleave", startAuto);
+    }
+
+    document.addEventListener("visibilitychange", () => {
+      if (SINGLE) return;
+      if (document.hidden) stopAuto();
+      else startAuto();
+    });
+
+    function drawProgress(){
+      const t = performance.now() - startedAt;
+      const p = Math.min(1, t / DURATION);
+      bar.style.width = (p * 100) + "%";
+      if (p < 1) rafId = requestAnimationFrame(drawProgress);
+    }
+    function startAuto(){
+      if (SINGLE || autoTimer) return;
+      startedAt = performance.now();
+      bar.style.width = "0%";
+      rafId = requestAnimationFrame(drawProgress);
+      autoTimer = setTimeout(() => { go(i + 1); }, DURATION);
+    }
+    function stopAuto(){
+      if (autoTimer){ clearTimeout(autoTimer); autoTimer = null; }
+      if (rafId){ cancelAnimationFrame(rafId); rafId = null; }
+    }
+    function restartAuto(){
+      if (SINGLE) return;
+      stopAuto();
+      setTimeout(startAuto, 50);
+    }
+
+    const ro = new ResizeObserver(() => { measure(); go(i, { noAnim:true }); });
+    ro.observe(viewport);
+    measure();
+    go(0, { noAnim:true });
+    if (!SINGLE) startAuto();
+  }
+})();
+
+(function(){
+  const lists = Array.from(document.querySelectorAll(".patchlist ul"));
+  lists.forEach(ul => {
+    const items = Array.from(ul.children).filter(li => li.nodeType === 1);
+    const max = parseInt(ul.getAttribute("data-initial-visible") || "1", 10);
+    if (items.length <= max) return;
+
+    items.forEach((li, idx) => { if (idx >= max) li.classList.add("patch-hidden"); });
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "patch-toggle";
+    btn.textContent = `Show all ${items.length} patch notes`;
+
+    btn.addEventListener("click", () => {
+      const hidden = ul.querySelector(".patch-hidden");
+      if (hidden) {
+        items.forEach(li => li.classList.remove("patch-hidden"));
+        btn.textContent = "Hide extra patch notes";
+      } else {
+        items.forEach((li, idx) => { if (idx >= max) li.classList.add("patch-hidden"); });
+        btn.textContent = `Show all ${items.length} patch notes`;
+        ul.parentElement.scrollIntoView({ behavior:"smooth", block:"nearest" });
+      }
+    });
+
+    ul.after(btn);
+  });
+})();
+
+(function fitTimeline(){
+  const tl = document.querySelector(".timeline-alt");
+  if (!tl) return;
+
+  function measure(){
+    const rail = tl.querySelector(".tl-rail");
+    const nodes = Array.from(tl.querySelectorAll(".tl-node"));
+    if (!rail || nodes.length === 0) return;
+
+    const tlRect = tl.getBoundingClientRect();
+    const centers = nodes.map(n => {
+      const dot = n.querySelector(".tl-dot");
+      const r = dot.getBoundingClientRect();
+      return (r.top + r.bottom) / 2 - tlRect.top;
+    }).sort((a,b)=>a-b);
+
+    const first = centers[0];
+    const last = centers[centers.length - 1];
+
+    const firstBadge = tl.querySelector(".tl-year-badge");
+    let start = first - 8;
+    if (firstBadge) {
+      const b = firstBadge.getBoundingClientRect();
+      start = (b.bottom - tlRect.top) + 6;
+    }
+
+    const endOffset = 8;
+    const height = Math.max(0, (last - endOffset) - start);
+
+    rail.style.setProperty("--rail-top", start + "px");
+    rail.style.setProperty("--rail-height", height + "px");
+  }
+
+  const onResize = () => requestAnimationFrame(measure);
+  window.addEventListener("resize", onResize, { passive:true });
+  window.addEventListener("load", measure);
+  measure();
+})();
+
+(function(){
+  const modal = document.getElementById("note-modal");
+  const bodyEl = document.getElementById("note-modal-body");
+  if (!modal || !bodyEl) return;
+
+  document.addEventListener("click", async (e)=>{
+    const a = e.target.closest('a[href*="patchnotes/index.html?id="]');
+    if (!a) return;
+    e.preventDefault();
+
+    const url = new URL(a.href, location.origin);
+    const id = url.searchParams.get("id");
+    if (!id) return;
+
+    bodyEl.innerHTML = '<p class="muted">Loading…</p>';
+    modal.classList.add("show");
+    document.body.classList.add("modal-open");
+
+    try{
+      const tryTxt = await fetch(`patchnotes/notes/${id}.txt`, { cache:"no-store" });
+      if (tryTxt.ok){
+        const txt = await tryTxt.text();
+        bodyEl.innerHTML = renderPatchText(txt);
+        history.pushState({ modal:true }, "", `#note-${id}`);
+        return;
+      }
+      const tryHtml = await fetch(`patchnotes/notes/${id}.html`, { cache:"no-store" });
+      if (tryHtml.ok){
+        const html = await tryHtml.text();
+        bodyEl.innerHTML = html;
+        history.pushState({ modal:true }, "", `#note-${id}`);
+        return;
+      }
+      throw new Error("not found");
+    }catch{
+      bodyEl.innerHTML = "<p>Couldn’t load patch note.</p>";
+    }
+  });
+
+  function closeModal(){
+    modal.classList.remove("show");
+    document.body.classList.remove("modal-open");
+  }
+
+  document.addEventListener("click", (e)=>{
+    if (e.target.id === "note-close" || e.target.classList.contains("modal-close")) closeModal();
+  });
+
+  modal.addEventListener("click", (e)=>{ if (e.target === modal) closeModal(); });
+
+  window.addEventListener("popstate", ()=> closeModal());
+
+  function escapeHTML(s){
+    return s.replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
+  }
+  function formatInline(s){
+    let out = escapeHTML(s);
+    out = out.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+    out = out.replace(/(?<!href=")(https?:\/\/[^\s)]+)(?![^<]*>)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+    out = out.replace(/`([^`]+)`/g, "<code>$1</code>");
+    out = out.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+    out = out.replace(/\*([^*]+)\*/g, "<em>$1</em>");
+    return out;
+  }
+  function toTimeTag(dateRaw){
+    const d = new Date(dateRaw);
+    const iso = isNaN(d) ? "" : d.toISOString().slice(0,10);
+    const label = isNaN(d) ? dateRaw : d.toLocaleDateString(undefined,{ year:"numeric", month:"long", day:"numeric" });
+    return iso ? `<time datetime="${iso}">${label}</time>` : escapeHTML(label);
+  }
+  function renderPatchText(txt){
+    const lines = txt.replace(/\r\n?/g, "\n").split("\n");
+    let i = 0, title = "", dateRaw = "";
+    if (lines[i] && /^#\s+/.test(lines[i])) { title = lines[i].replace(/^#\s+/, "").trim(); i++; }
+    if (lines[i] && /^@date:/i.test(lines[i])) { dateRaw = lines[i].replace(/^@date:\s*/i, "").trim(); i++; }
+    while (i < lines.length && !lines[i].trim()) i++;
+
+    const sections = [];
+    let cur = null;
+    const push = ()=>{ if (cur) sections.push(cur); cur = null; };
+
+    for (; i < lines.length; i++){
+      const line = lines[i];
+      const h = line.match(/^##\s+(.+)/);
+      if (h){ push(); cur = { heading:h[1].trim(), items:[], para:[] }; continue; }
+      const b = line.match(/^\s*[-*]\s+(.+)/);
+      if (b){ if (!cur) cur = { heading:"", items:[], para:[] }; cur.items.push(b[1]); continue; }
+      if (!line.trim()){ if (cur && cur.para.length && cur.para.at(-1) !== "") cur.para.push(""); continue; }
+      if (!cur) cur = { heading:"", items:[], para:[] };
+      cur.para.push(line.trim());
+    }
+    push();
+
+    const headHTML = `
+      <div class="note-head">
+        <h1 class="note-title">${escapeHTML(title || "Patch Notes")}</h1>
+        ${dateRaw ? `<div class="note-meta">${toTimeTag(dateRaw)}</div>` : ""}
+      </div>`;
+
+    const bodyParts = sections.map(s=>{
+      const h = s.heading ? `<h4>${escapeHTML(s.heading)}</h4>` : "";
+      const paras = (s.para.join("\n").split(/\n{2,}/).filter(Boolean)
+        .map(p=>`<p>${formatInline(p)}</p>`).join("")) || "";
+      const bullets = s.items.length ? `<ul>${s.items.map(x=>`<li>${formatInline(x)}</li>`).join("")}</ul>` : "";
+      return `${h}${paras}${bullets}`;
+    }).join("");
+
+    return `<article class="note-card">${headHTML}<div class="note-body">${bodyParts}</div></article>`;
+  }
+})();

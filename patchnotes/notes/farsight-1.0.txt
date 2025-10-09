@@ -1,0 +1,5 @@
+# FARSIGHT v1.0 — Release
+@date: 2023-10-27
+
+## Release
+- Initial release.

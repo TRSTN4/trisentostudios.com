@@ -1,45 +1,586 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TRISENTO STUDIOS — Launches soon</title>
-  <meta name="description" content="TRISENTO STUDIOS — launches soon. Want to get in contact sooner? contact@trisentostudios.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <title>TRISENTO STUDIOS</title>
+  <meta name="description" content="TRISENTO STUDIOS — Crafting worlds, shaping stories, and sparking imagination on Roblox." />
+  <link rel="icon" type="image/x-icon" href="assets/logo.ico" />
+  <link rel="stylesheet" href="css/styles.css?v=2" />
 </head>
-<body>
-  <!-- Decorative starfields / background -->
-  <div aria-hidden="true" class="stars stars--layer1"></div>
-  <div aria-hidden="true" class="stars stars--layer2"></div>
-  <div aria-hidden="true" class="vignette"></div>
+<body id="top">
+  <nav class="nav" id="nav">
+    <a class="brand" href="#top" aria-label="TRISENTO STUDIOS">
+      <img src="assets/logo.svg" alt="TRISENTO logo" onerror="this.style.display='none'" />
+      <span>TRISENTO STUDIOS</span>
+    </a>
+    <div class="links" id="links">
+      <a href="#releases" class="scroll">Releases</a>
+      <a href="#story" class="scroll">Story</a>
+      <a href="#roadmap" class="scroll">Roadmap</a>
+      <a href="#contact" class="scroll">Contact</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
+    </button>
+  </nav>
 
-  <main class="wrap">
-    <header class="logoBlock" aria-label="TRISENTO STUDIOS">
-      <div class="logoWrap">
-        <!-- Optional halo behind the logo for subtle depth -->
-        <span class="halo" aria-hidden="true"></span>
+  <header class="hero" role="banner">
+    <div class="video-bg" aria-hidden="true">
+      <video id="bgVideo" autoplay muted loop playsinline poster="assets/hero-poster.jpg">
+        <source src="assets/hero.webm" type="video/webm" />
+        <source src="assets/hero.mp4" type="video/mp4" />
+        <img src="assets/hero-poster.jpg" alt="Background preview" />
+      </video>
+    </div>
+    <div class="overlay" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="kicker">Roblox Game Studio</div>
+      <h1 class="title">TRISENTO STUDIOS</h1>
+      <p class="subtitle">Building worlds, shaping stories, and sparking imagination. We create immersive experiences that engage players and invite them to explore.</p>
+      <a href="#releases" class="cta scroll">Explore ↓</a>
+    </div>
+  </header>
 
-        <!-- Your transparent logo -->
-        <img class="logo" src="logo.png" alt="TRISENTO STUDIOS" />
-        <span class="logoGlow" aria-hidden="true"></span>
+  <section id="releases" class="band band-1">
+    <div class="section-wrap">
+      <h2>Releases</h2>
+      <p>Below are the games we have developed and released to the public. Some games still get actively updated to this day.</p>
+    </div>
+  </section>
+
+  <section id="work-loonlife" class="band band-3 work-row alt-1">
+    <div class="section-wrap grid cols-2 work-grid">
+      <div class="work-gallery">
+        <div class="gallery" id="gallery-loonlife">
+          <button class="gal-btn gal-prev" aria-label="Previous">‹</button>
+          <div class="gal-viewport">
+            <div class="gal-track">
+              <div class="gal-slide">
+                <img src="assets/gallery/loon_life/teaser.png" alt="LOON LIFE - Teaser" />
+              </div>
+            </div>
+          </div>
+          <button class="gal-btn gal-next" aria-label="Next">›</button>
+        </div>
       </div>
-      <h1 class="brand">TRISENTO STUDIOS</h1>
-    </header>
+      <div class="work-text">
+        <h2>LOON LIFE <span class="work-year">OCT 25, 2025</span></h2>
+        <p>Drift in by hot-air balloon, touch down on a new shore, and make it yours. Loon Life is a cozy life-sim where you discover islands, take on quests, and claim an island to shape with crafting, building, and farming.</p>
+        <ul class="bullets">
+          <li>🎈 Travel by hot-air balloon across billions of unique islands</li>
+          <li>🗺️ Find secrets and tackle island-specific quests</li>
+          <li>🏝️ Claim an island: build, decorate, and farm</li>
+          <li>🌾 Farm, harvest, and relax into cozy progression</li>
+          <li>🧭 Level up your character & professions to unlock new recipes</li>
+        </ul>
+        <div class="patchlist">
+          <h3>Patch Notes</h3>
+          <ul>
+            <li class="muted">No public notes yet.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <p class="tagline">
-      <span class="reveal">LAUNCHES SOON</span><span class="ellipsis" aria-hidden="true"></span>
-    </p>
+  <section id="work-farsight" class="band band-1 work-row alt-0">
+    <div class="section-wrap grid cols-2 work-grid">
+      <div class="work-text">
+        <h2>FARSIGHT <span class="work-year">2023</span></h2>
+        <p>Crash. Survive. Tell the story. Your helicopter goes down over a mysterious island. Stranded and alone, you’ll fix a broken radio, follow the clues to your missing crew, and outsmart whatever’s moving in the trees.</p>
+        <ul class="bullets">
+          <li>🌲 Explore a haunting forest full of secrets and landmarks</li>
+          <li>📻 Repair the radio with multi-step objectives to call for rescue</li>
+          <li>🧩 Solve environmental puzzles to track your missing crew</li>
+          <li>🌙 Dynamic night tension with escalating threats</li>
+        </ul>
+        <div class="patchlist">
+          <h3>Patch Notes</h3>
+          <ul>
+            <li><a href="patchnotes/index.html?id=farsight-1.2">v1.2 — Secrets &amp; Stories</a> <span class="muted">January 20, 2024</span></li>
+            <li><a href="patchnotes/index.html?id=farsight-1.1.2">v1.1.2 - Hotfixes</a> <span class="muted">January 4, 2024</span></li>
+            <li><a href="patchnotes/index.html?id=farsight-1.1.1">v1.1.1 - Hotfixes</a> <span class="muted">January 3, 2024</span></li>
+            <li><a href="patchnotes/index.html?id=farsight-1.1">v1.1 - CO-OP</a> <span class="muted">December 31, 2023</span></li>
+            <li><a href="patchnotes/index.html?id=farsight-1.0.2">v1.0.2 - Hotfixes</a> <span class="muted">November 20, 2023</span></li>
+            <li><a href="patchnotes/index.html?id=farsight-1.0.1">v1.0.1 - Tutorial</a> <span class="muted">October 30, 2023</span></li>
+            <li><a href="patchnotes/index.html?id=farsight-1.0">v1.0 - Release</a> <span class="muted">October 27, 2023</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="work-gallery">
+        <div class="gallery" id="gallery-farsight">
+          <button class="gal-btn gal-prev" aria-label="Previous">‹</button>
+          <div class="gal-viewport">
+            <div class="gal-track">
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/farsight.png" alt="FARSIGHT - Logo" />
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/powerplant.png" alt="FARSIGHT - Powerplant" />
+                <div class="gal-caption">
+                  <div class="cap-title">Powerplant</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/powerplant_control_room.png" alt="FARSIGHT - Powerplant control room" />
+                <div class="gal-caption">
+                  <div class="cap-title">Powerplant</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/diner.png" alt="FARSIGHT - Diner" />
+                <div class="gal-caption">
+                  <div class="cap-title">Diner</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/crashsite.png" alt="FARSIGHT - Crash Site" />
+                <div class="gal-caption">
+                  <div class="cap-title">Crash Site</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/church.png" alt="FARSIGHT - Church" />
+                <div class="gal-caption">
+                  <div class="cap-title">Church</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/campsite.png" alt="FARSIGHT - Campsite" />
+                <div class="gal-caption">
+                  <div class="cap-title">Campsite</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/construction_site.png" alt="FARSIGHT - Construction Site" />
+                <div class="gal-caption">
+                  <div class="cap-title">Construction Site</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/flats1.png" alt="FARSIGHT - Flats" />
+                <div class="gal-caption">
+                  <div class="cap-title">Flats</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/flats2.png" alt="FARSIGHT - Flats" />
+                <div class="gal-caption">
+                  <div class="cap-title">Flats</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/garages.png" alt="FARSIGHT - Garages" />
+                <div class="gal-caption">
+                  <div class="cap-title">Garages</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/jerrycan.png" alt="FARSIGHT - Jerrycan" />
+                <div class="gal-caption">
+                  <div class="cap-title">Garages</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/garage.png" alt="FARSIGHT - Garage" />
+                <div class="gal-caption">
+                  <div class="cap-title">Garages</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/stalker_house.png" alt="FARSIGHT - Stalker House" />
+                <div class="gal-caption">
+                  <div class="cap-title">Stalker House</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/stalker_house_back.png" alt="FARSIGHT - Stalker House Back" />
+                <div class="gal-caption">
+                  <div class="cap-title">Stalker House</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/tent1.png" alt="FARSIGHT - Tent" />
+                <div class="gal-caption">
+                  <div class="cap-title">Tent</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/tent2.png" alt="FARSIGHT - Tent" />
+                <div class="gal-caption">
+                  <div class="cap-title">Tent</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/shipwreck.png" alt="FARSIGHT - Shipwreck" />
+                <div class="gal-caption">
+                  <div class="cap-title">Shipwreck</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/boat.png" alt="FARSIGHT - Boat" />
+                <div class="gal-caption">
+                  <div class="cap-title">Shipwreck</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/bridge.png" alt="FARSIGHT - Bridge" />
+                <div class="gal-caption">
+                  <div class="cap-title">Bridge</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/helipad.png" alt="FARSIGHT - Helipad" />
+                <div class="gal-caption">
+                  <div class="cap-title">Helipad</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/hospital.png" alt="FARSIGHT - Hospital" />
+                <div class="gal-caption">
+                  <div class="cap-title">Hospital</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/hospital_room.png" alt="FARSIGHT - Hospital Room" />
+                <div class="gal-caption">
+                  <div class="cap-title">Hospital</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/houses.png" alt="FARSIGHT - Houses" />
+                <div class="gal-caption">
+                  <div class="cap-title">Houses</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/lighthouse.png" alt="FARSIGHT - Lighthouse" />
+                <div class="gal-caption">
+                  <div class="cap-title">Lighthouse</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/playground.png" alt="FARSIGHT - Playground" />
+                <div class="gal-caption">
+                  <div class="cap-title">Playground</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/radiotower.png" alt="FARSIGHT - Radiotower" />
+                <div class="gal-caption">
+                  <div class="cap-title">Radiotower</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/transmission_tower.png" alt="FARSIGHT - Transmission Tower" />
+                <div class="gal-caption">
+                  <div class="cap-title">Transmission Tower</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/trashsite.png" alt="FARSIGHT - Trash Site" />
+                <div class="gal-caption">
+                  <div class="cap-title">Trash Site</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/watertank.png" alt="FARSIGHT - Water Tank" />
+                <div class="gal-caption">
+                  <div class="cap-title">Water Tank</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/farsight/map.png" alt="FARSIGHT - Map" />
+                <div class="gal-caption">
+                  <div class="cap-title">Map</div>
+                  <div class="cap-desc">FARSIGHT</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="gal-btn gal-next" aria-label="Next">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <p class="contact">
-      Want to get in contact sooner?
-      <a href="mailto:contact@trisentostudios.com">contact@trisentostudios.com</a>
-    </p>
-  </main>
+  <section id="work-dreamplots" class="band band-3 work-row alt-1">
+    <div class="section-wrap grid cols-2 work-grid">
+      <div class="work-gallery">
+        <div class="gallery" id="gallery-dreamplots">
+          <button class="gal-btn gal-prev" aria-label="Previous">‹</button>
+          <div class="gal-viewport">
+            <div class="gal-track">
+              <div class="gal-slide">
+                <img src="assets/gallery/dream_plots/intro.png" alt="DREAM PLOTS - Intro" />
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/dream_plots/showcase1.png" alt="DREAM PLOTS - Showcase 1" />
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/dream_plots/showcase2.png" alt="DREAM PLOTS - Showcase 2" />
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/dream_plots/showcase3.png" alt="DREAM PLOTS - Showcase 3" />
+              </div>
+            </div>
+          </div>
+          <button class="gal-btn gal-next" aria-label="Next">›</button>
+        </div>
+      </div>
+      <div class="work-text">
+        <h2>DREAM PLOTS <span class="work-year">2023</span></h2>
+        <p>Build your world. Dream Plots is a cozy, real-time sandbox with days, seasons, and weather. Claim a plot, design your space, and create with a growing library of free assets.</p>
+        <ul class="bullets">
+          <li>🕰️ Real-time day/night, seasons, and weather</li>
+          <li>🧱 Personal plots with fast, expressive building tools</li>
+          <li>🆓 500+ free assets you can use</li>
+          <li>✨ Live events: fireflies, aurora, meteor showers</li>
+        </ul>
+        <div class="patchlist">
+          <h3>Patch Notes</h3>
+          <ul>
+            <li><a href="patchnotes/index.html?id=dreamplots-1.0">v1.0 - Release</a> <span class="muted">July 1, 2023</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <footer class="foot" aria-hidden="true">
-    © 2025 TRISENTO STUDIOS
-  </footer>
+  <section id="work-lootrunners" class="band band-1 work-row alt-0 last-divider">
+    <div class="section-wrap grid cols-2 work-grid">
+      <div class="work-text">
+        <h2>LOOT RUNNERS <span class="work-year">2023</span></h2>
+        <p>Sprint through competitive runs with global matchmaking, varied tasks, and tactical sabotages. Climb the leaderboards, earn prizes, and master faster routes—solo or with friends.</p>
+        <ul class="bullets">
+          <li>🌍 Global matchmaking &amp; cross-lobby competition</li>
+          <li>🏆 Leaderboards, prizes, and replayable routes</li>
+          <li>🧩 Quick-fire tasks &amp; puzzles for reflexes &amp; logic</li>
+          <li>💣 Sabotages to slow down your opponents</li>
+        </ul>
+        <div class="patchlist">
+          <h3>Patch Notes</h3>
+          <ul>
+            <li><a href="patchnotes/index.html?id=lootrunners-1.0">v1.0 - Release</a> <span class="muted">April 20, 2023</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="work-gallery">
+        <div class="gallery" id="gallery-lootrunners">
+          <button class="gal-btn gal-prev" aria-label="Previous">‹</button>
+          <div class="gal-viewport">
+            <div class="gal-track">
+              <div class="gal-slide">
+                <img src="assets/gallery/loot_runners/introduction.png" alt="LOOT RUNNERS - Introduction" />
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/loot_runners/lobby.png" alt="LOOT RUNNERS - Lobby" />
+                <div class="gal-caption">
+                  <div class="cap-title">Lobby</div>
+                  <div class="cap-desc">LOOT RUNNERS</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/loot_runners/dome.png" alt="LOOT RUNNERS - Dome" />
+                <div class="gal-caption">
+                  <div class="cap-title">Dome</div>
+                  <div class="cap-desc">LOOT RUNNERS</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/loot_runners/dome_ending.png" alt="LOOT RUNNERS - Dome Ending" />
+                <div class="gal-caption">
+                  <div class="cap-title">Dome Ending</div>
+                  <div class="cap-desc">LOOT RUNNERS</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/loot_runners/buccaneer_bluffs.png" alt="LOOT RUNNERS - Buccaneer Bluffs" />
+                <div class="gal-caption">
+                  <div class="cap-title">Buccaneer Bluffs</div>
+                  <div class="cap-desc">LOOT RUNNERS</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/loot_runners/buccaneer_bluffs_2.png" alt="LOOT RUNNERS - Buccaneer Bluffs" />
+                <div class="gal-caption">
+                  <div class="cap-title">Buccaneer Bluffs</div>
+                  <div class="cap-desc">LOOT RUNNERS</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/loot_runners/marauders_mount.png" alt="LOOT RUNNERS - Marauder's Mount" />
+                <div class="gal-caption">
+                  <div class="cap-title">Marauder's Mount</div>
+                  <div class="cap-desc">LOOT RUNNERS</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/loot_runners/pilgrims_point.png" alt="LOOT RUNNERS - Pilgrim's Point" />
+                <div class="gal-caption">
+                  <div class="cap-title">Pilgrim's Point</div>
+                  <div class="cap-desc">LOOT RUNNERS</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/loot_runners/shipwreck_summit.png" alt="LOOT RUNNERS - Shipwreck Summit" />
+                <div class="gal-caption">
+                  <div class="cap-title">Shipwreck Summit</div>
+                  <div class="cap-desc">LOOT RUNNERS</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/loot_runners/symphony_seafront.png" alt="LOOT RUNNERS - Symphony Seafront" />
+                <div class="gal-caption">
+                  <div class="cap-title">Symphony Seafront</div>
+                  <div class="cap-desc">LOOT RUNNERS</div>
+                </div>
+              </div>
+              <div class="gal-slide">
+                <img src="assets/gallery/loot_runners/corsairs_retreat.png" alt="LOOT RUNNERS - Corsair's Retreat" />
+                <div class="gal-caption">
+                  <div class="cap-title">Corsair's Retreat</div>
+                  <div class="cap-desc">LOOT RUNNERS</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="gal-btn gal-next" aria-label="Next">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="story" class="band band-5">
+    <div class="section-wrap">
+      <h2>Our Story</h2>
+      <div class="story-split">
+        <div class="story-col">
+          <p>It all started when the founder of the studio wanted to make a game — something that didn’t exist yet. After a lot of brainstorming and development, our first game, <strong>LOOT RUNNERS</strong>, was released. Not long after, our second project, <strong>DREAM PLOTS</strong>, came to life — a creative game where everyone could freely build on their own plot using advanced placement tools and tons of free assets.</p>
+          <p>After Dream Plots, we felt something was missing. We wanted a game with a story — something more adventurous and thrilling. That’s how <strong>FARSIGHT</strong> was born: a unique horror experience with an intriguing and mysterious storyline.</p>
+        </div>
+        <div class="story-col">
+          <p>Now, almost two years after FARSIGHT’s release, it’s time for the next big step. A game that combines everything we’ve learned — one game that connects the spirit of all our previous titles. <strong>LOON LIFE</strong> is that project. It’s not released yet, but it’s planned for <strong>October 25, 2025</strong>.</p>
+          <p>We see our older titles as learning experiences that helped shape who we are today. With <strong>LOON LIFE</strong>, we’re building something long-term — a living game with weekly updates, new content, and ongoing support for years to come.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap" class="band band-6">
+    <div class="section-wrap">
+      <h2>Roadmap</h2>
+      <p class="roadmap-lead">Milestones we’re actively building toward. Dates are targets and may shift as we test, learn, and polish.</p>
+      <div class="timeline-alt">
+        <div class="tl-rail" aria-hidden="true"></div>
+
+        <div class="tl-year-badge">OCT 2025</div>
+        <article class="tl-node left">
+          <div class="tl-dot" aria-hidden="true"></div>
+          <div class="tl-card">
+            <h3>Loon Life v1.0 - Open Beta</h3>
+            <p>Open beta launch of a new experience focused on building, exploring, and discovery.</p>
+          </div>
+        </article>
+
+        <div class="tl-year-badge">DEC 2025</div>
+        <article class="tl-node right">
+          <div class="tl-dot" aria-hidden="true"></div>
+          <div class="tl-card">
+            <h3>Loon Life v1.1 - Christmas Chaos</h3>
+            <p>Seasonal event featuring festive decorations and limited-time rewards.</p>
+          </div>
+        </article>
+
+        <div class="tl-year-badge next">2026</div>
+        <article class="tl-node left">
+          <div class="tl-dot" aria-hidden="true"></div>
+          <div class="tl-card">
+            <h3>FARSIGHT 2.0 | Evolved</h3>
+            <p>A complete overhaul of the FARSIGHT experience with new mechanics, improved visuals, and expanded storytelling.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="band band-6">
+    <div class="section-wrap">
+      <h2>Contact</h2>
+      <p class="muted">Hire us, propose a collaboration or have questions?</p>
+      <p>contact@trisentostudios.com</p>
+      <div class="contact-options">
+        <article class="option">
+          <h3>Hire Us</h3>
+          <p>Do you want your own game? or need help with an existing one?</p>
+          <ul class="bullets small">
+            <li>We have over 3 years of experience.</li>
+            <li>Released 4 unique games on Roblox.</li>
+          </ul>
+          <a class="btn cta full" href="mailto:contact@trisentostudios.com?subject=Hire%20TRISENTO%20STUDIOS">Hire us</a>
+        </article>
+        <article class="option">
+          <h3>Collaborate</h3>
+          <p>We are open to collaboration. Let's build something great together!</p>
+          <ul class="bullets small">
+            <li>Are you a creator, brand, or developer?</li>
+            <li>We are always open to new ideas and partnerships.</li>
+          </ul>
+          <a class="btn cta full" href="mailto:contact@trisentostudios.com?subject=Collaboration">Pitch a collab</a>
+        </article>
+        <article class="option">
+          <h3>Questions</h3>
+          <p>Have questions? ask us anything!</p>
+          <ul class="bullets small">
+            <li>Ask us anything, we will respond!</li>
+            <li>We're here to help!</li>
+          </ul>
+          <a class="btn cta full" href="mailto:contact@trisentostudios.com?subject=Question">Ask a question</a>
+        </article>
+      </div>
+      <p class="muted">Typical reply window: 1–2 business days.</p>
+    </div>
+  </section>
+
+  <div id="note-modal" aria-hidden="true">
+    <div class="modal-panel">
+      <button id="note-close" class="modal-close" aria-label="Close patch note">×</button>
+      <div id="note-modal-body"></div>
+    </div>
+  </div>
+
+  <footer class="footer">© <span id="year"></span> TRISENTO STUDIOS — All rights reserved.</footer>
+
+  <script src="js/main.js?v=2" defer></script>
 </body>
 </html>

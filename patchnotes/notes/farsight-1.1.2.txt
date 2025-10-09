@@ -1,0 +1,18 @@
+# FARSIGHT v1.1.2 — Hotfixes
+@date: 2024-01-04
+
+## Enhancements
+- Restricted flashlight during cutscenes, tutorial, traps, or menus.
+- Improved ending scene visibility.
+- Adjusted spawn to prevent tutorial prompt overlap.
+
+## Design & UI
+- Hide team labels during cutscenes/tutorial/traps.
+- Tutorial updates: count label; hide “continue” during typewriter text.
+- Hide inventory update notification during ending cutscene.
+- Show Chapter display text on chapter join.
+- Show current game version in settings.
+
+## Bug Fixes
+- Fixed players leaving queue causing game-breaking issues.
+- Fixed lobby head images not removed when players leave.

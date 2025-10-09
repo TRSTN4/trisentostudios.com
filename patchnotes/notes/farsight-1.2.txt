@@ -1,0 +1,21 @@
+# FARSIGHT v1.2 — Secrets & Stories
+@date: 2024-01-20
+
+## Enhancements
+- Disabled player-to-player collision.
+- Official support for resetting characters.
+- Improved collision (radio tower, nuke terrain stairs).
+- New thought prompts & rescue call dialogues.
+- Backend enhancements.
+- Special edition queue for group members (placeholder).
+- Temporarily disabled glitch ending (to be repurposed).
+- **Added the true ending.**
+
+## Design & UI
+- Removed SFX when GUI toggling is disabled.
+- Lobby GUI to request user support.
+- EV rank tag in chat during chapters.
+- Updated “Like GUI” messages.
+
+## Bug Fixes
+- Objective list now updates correctly after transmission tower interactions post-completion.

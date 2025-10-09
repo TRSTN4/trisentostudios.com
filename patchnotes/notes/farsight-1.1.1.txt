@@ -1,0 +1,12 @@
+# FARSIGHT v1.1.1 — Hotfixes
+@date: 2024-01-03
+
+## Enhancements
+- Disable smoke particles by default for better performance.
+
+## Design & UI
+- New settings menu including smoke toggle.
+
+## Bug Fixes
+- Removed invisible barrier on power plant roof.
+- Removed invisible barrier on diner roof.

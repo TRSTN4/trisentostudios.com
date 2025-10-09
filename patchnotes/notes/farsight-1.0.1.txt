@@ -1,0 +1,5 @@
+# FARSIGHT v1.0.1 — Tutorial
+@date: 2023-10-30
+
+## Enhancements
+- Added a comprehensive tutorial to introduce mechanics and story for smoother onboarding.

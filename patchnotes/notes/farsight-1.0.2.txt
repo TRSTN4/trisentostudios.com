@@ -1,0 +1,9 @@
+# FARSIGHT v1.0.2 — Hotfixes
+@date: 2023-11-20
+
+## Enhancements
+- Optimized stalker rotations to update only when necessary (smoother gameplay, less lag).
+
+## Bug Fixes
+- Fixed black screen during flashlight jumpscare.
+- Prevented opening inventory during tutorial to avoid confusion and progression issues.
