@@ -1,4 +1,4 @@
-# FARSIGHT v1.1 — CO-OP
+# FARSIGHT v1.1 - CO-OP
 @date: 2023-12-31
 
 ## Enhancements
@@ -13,7 +13,7 @@
 - Text notifications on objective completion & inventory changes.
 - Instruction text for exiting read newspaper/note GUI.
 
-## New Gamepass — Early VIP
+## New Gamepass - Early VIP
 - EV chat tag for Early VIPs.
 - Early access to updates.
 - More perks coming over time.

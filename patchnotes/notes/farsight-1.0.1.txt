@@ -1,4 +1,4 @@
-# FARSIGHT v1.0.1 — Tutorial
+# FARSIGHT v1.0.1 - Tutorial
 @date: 2023-10-30
 
 ## Enhancements

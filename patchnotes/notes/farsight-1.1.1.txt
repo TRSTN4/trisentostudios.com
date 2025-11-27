@@ -1,4 +1,4 @@
-# FARSIGHT v1.1.1 — Hotfixes
+# FARSIGHT v1.1.1 - Hotfixes
 @date: 2024-01-03
 
 ## Enhancements
