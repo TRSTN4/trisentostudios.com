@@ -9,6 +9,14 @@
 		content="Watch the official LOON LIFE trailer, a cozy island life-sim by TRISENTO STUDIOS." />
 	<link rel="icon" type="image/x-icon" href="../assets/logo.ico" />
 	<link rel="stylesheet" href="../css/styles.css?v=2" />
+
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-NSSGTGY1LD"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'G-NSSGTGY1LD');
+	</script>
 </head>
 
 <body id="top">
@@ -222,8 +230,38 @@
 					}, { once: true });
 				});
 			}
+
+			let sentPlay = false;
+			let sentComplete = false;
+
+			vid.addEventListener("play", () => {
+				if (sentPlay) return;
+				sentPlay = true;
+
+				if (typeof gtag === "function") {
+					gtag("event", "trailer_play", {
+						video_id: "loonlife_trailer",
+						video_title: "Loon Life - Official Trailer",
+						page_path: location.pathname
+					});
+				}
+			});
+
+			vid.addEventListener("ended", () => {
+				if (sentComplete) return;
+				sentComplete = true;
+
+				if (typeof gtag === "function") {
+					gtag("event", "trailer_complete", {
+						video_id: "loonlife_trailer",
+						video_title: "Loon Life - Official Trailer",
+						page_path: location.pathname
+					});
+				}
+			});
 		});
 	</script>
+
 </body>
 
 </html>
