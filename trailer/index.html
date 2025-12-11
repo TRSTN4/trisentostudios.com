@@ -308,6 +308,20 @@
 					});
 				}
 			});
+
+			const playBtn = document.querySelector(".trailer-alpha-play");
+			if (playBtn) {
+				playBtn.addEventListener("click", () => {
+					if (typeof gtag === "function") {
+						gtag("event", "alpha_play_click", {
+							video_id: "loonlife_trailer",
+							game_id: "loon_life_alpha",
+							link_url: playBtn.href,
+							page_path: location.pathname
+						});
+					}
+				});
+			}
 		});
 	</script>
 
