@@ -1,9 +1,9 @@
 # Loon Life - v0.1.1-alpha
-@date: 2025-12-11
+@date: 2025-12-12
 
 ## Added
 - Added acknowledge alpha screen.
-- Added join group prompt to the hub.
+- Added join group button in the hub.
 - Added favorite game button in the hub.
 
 ## Bug Fixes
