@@ -2258,3 +2258,12 @@ body.modal-open {
     max-width: 180px;
   }
 }
+
+.trailer-bar-copy .chip {
+  margin-right: 3px;
+  margin-bottom: 6px;
+}
+
+.trailer-bar-title {
+  margin-top: 10px;
+}
