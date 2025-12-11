@@ -1274,10 +1274,16 @@ body.modal-open {
   .trailer-bar {
     left: 10px;
     right: 10px;
-    transform: none;
     width: auto;
     bottom: 10px;
     padding: 10px 10px;
+
+    transform: translateY(120%);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .trailer-bar.trailer-bar--visible {
+    transform: translateY(0);
   }
 
   .trailer-bar-inner {
@@ -1295,7 +1301,8 @@ body.modal-open {
   }
 
   .trailer-bar-sub {
-    display: none;
+    display: block;
+    font-size: 12px;
   }
 
   .trailer-bar-video {
@@ -2188,4 +2195,30 @@ body.modal-open {
 
 .trailer-details {
   margin-top: 0;
+}
+
+.trailer-bar {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(-50%, 120%, 0);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.trailer-bar.trailer-bar--visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate3d(-50%, 0, 0);
+}
+
+.trailer-bar {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(-50%, 120%, 0);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.trailer-bar.trailer-bar--visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate3d(-50%, 0, 0);
 }

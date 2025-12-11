@@ -1,0 +1,11 @@
+# Loon Life - v0.1.1-alpha
+@date: 2025-12-11
+
+## Added
+- Added acknowledge alpha screen.
+- Added join group prompt to the hub.
+- Added favorite game button in the hub.
+
+## Bug Fixes
+- Fixed a bug that gave invalid placement error on valid tiles.
+- Fixed an issue where non-owners and non-members could open chests on claimed islands.

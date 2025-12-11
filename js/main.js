@@ -350,3 +350,58 @@ if (video && typeof video.play === "function") {
     return `<article class="note-card">${headHTML}<div class="note-body">${bodyParts}</div></article>`;
   }
 })();
+
+(function initTrailerBarVisibility() {
+  const trailerBar = document.getElementById("trailer-teaser");
+  const hero = document.querySelector(".hero");
+  const contact = document.getElementById("contact");
+
+  if (!trailerBar) return;
+
+  if (!hero) {
+    trailerBar.classList.remove("trailer-bar--visible");
+    return;
+  }
+
+  function isInViewport(el) {
+    if (!el) return false;
+    const rect = el.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    return rect.bottom > 0 && rect.top < vh;
+  }
+
+  let hasUserScrolled = false;
+
+  function update(fromLoad = false) {
+    const heroVisible = isInViewport(hero);
+    const contactVisible = isInViewport(contact);
+
+    const shouldShowNow = !heroVisible && !contactVisible;
+
+    const allowShow =
+      (fromLoad && shouldShowNow) ||
+      (hasUserScrolled && shouldShowNow);
+
+    if (allowShow) {
+      trailerBar.classList.add("trailer-bar--visible");
+    } else {
+      trailerBar.classList.remove("trailer-bar--visible");
+    }
+  }
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      hasUserScrolled = true;
+      update(false);
+    },
+    { passive: true }
+  );
+
+  window.addEventListener("resize", () => update(false), { passive: true });
+  window.addEventListener("orientationchange", () => update(false), { passive: true });
+
+  window.addEventListener("load", () => update(true));
+
+  update(true);
+})();
