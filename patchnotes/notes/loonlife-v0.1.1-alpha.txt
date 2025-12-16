@@ -6,5 +6,8 @@
 - Added join group button in the hub.
 - Added favorite game button in the hub.
 
+## Improved
+- Improved the hover menu in build mode for better clarity and usability.
+
 ## Bug Fixes
 - Fixed an issue where non-owners and non-members could open chests on claimed islands.
