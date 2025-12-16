@@ -7,5 +7,4 @@
 - Added favorite game button in the hub.
 
 ## Bug Fixes
-- Fixed a bug that gave invalid placement error on valid tiles.
 - Fixed an issue where non-owners and non-members could open chests on claimed islands.
