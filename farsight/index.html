@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<title>FARSIGHT — Reveal Soon | TRISENTO STUDIOS</title>
+	<meta name="description" content="FARSIGHT reveal countdown by TRISENTO STUDIOS." />
+
+	<link rel="icon" type="image/x-icon" href="../assets/logo.ico" />
+	<link rel="stylesheet" href="../css/styles.css" />
+	<link rel="stylesheet" href="farsight.css" />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Share+Tech+Mono&display=swap"
+		rel="stylesheet">
+
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-NSSGTGY1LD"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'G-NSSGTGY1LD');
+	</script>
+</head>
+
+<body id="top">
+	<nav class="nav" id="nav">
+		<a class="brand" href="../" aria-label="TRISENTO STUDIOS">
+			<img src="../assets/logo.svg" alt="TRISENTO logo" onerror="this.style.display='none'" />
+			<span>TRISENTO STUDIOS</span>
+		</a>
+
+		<div class="links" id="links">
+			<a href="../#releases">Releases</a>
+			<a href="../#story">Our Story</a>
+			<a href="../#roadmap">Roadmap</a>
+			<a href="../#contact">Contact</a>
+		</div>
+
+		<button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+			<svg viewBox="0 0 24 24" aria-hidden="true">
+				<path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" />
+			</svg>
+		</button>
+	</nav>
+
+	<header class="hero reveal-hero signal-jump" role="banner">
+		<div class="spooky-bg" aria-hidden="true">
+			<div class="bg-base"></div>
+			<div class="bg-aurora"></div>
+			<div class="bg-fog fog-1"></div>
+			<div class="bg-fog fog-2"></div>
+			<div class="bg-scanlines"></div>
+			<div class="bg-sweep"></div>
+			<div class="bg-grain"></div>
+			<div class="bg-vignette"></div>
+		</div>
+
+		<div class="overlay" aria-hidden="true"></div>
+
+		<div class="reveal-card" id="revealCard" aria-live="polite">
+			<div class="reveal-kicker">Incoming Transmission</div>
+			<h1 class="reveal-title" data-text="FARSIGHT">????????</h1>
+			<p class="reveal-sub">
+				Something is coming. The signal gets stronger every day.
+			</p>
+
+			<div class="countdown" role="group" aria-label="Countdown">
+				<div class="cd-box">
+					<div class="cd-num" id="cdDays" data-shadow="00">00</div>
+					<div class="cd-label">Days</div>
+				</div>
+				<div class="cd-box">
+					<div class="cd-num" id="cdHours" data-shadow="00">00</div>
+					<div class="cd-label">Hours</div>
+				</div>
+				<div class="cd-box">
+					<div class="cd-num" id="cdMins" data-shadow="00">00</div>
+					<div class="cd-label">Minutes</div>
+				</div>
+				<div class="cd-box">
+					<div class="cd-num" id="cdSecs" data-shadow="00">00</div>
+					<div class="cd-label">Seconds</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<script src="../js/main.js?v=2" defer></script>
+	<script src="./countdown.js?v=3" defer></script>
+</body>
+
+</html>

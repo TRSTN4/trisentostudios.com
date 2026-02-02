@@ -9,6 +9,12 @@
     content="TRISENTO STUDIOS - Crafting worlds, shaping stories, and sparking imagination on Roblox." />
   <link rel="icon" type="image/x-icon" href="assets/logo.ico" />
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="farsight/farsight.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NSSGTGY1LD"></script>
   <script>
@@ -26,8 +32,8 @@
       <span>TRISENTO STUDIOS</span>
     </a>
     <div class="links" id="links">
-      <a href="trailer/" class="nav-trailer-btn">
-        <span class="nav-trailer-label">Trailer</span>
+      <a href="farsight/" class="nav-trailer-btn nav-farsight-btn">
+        <span class="nav-trailer-label">FARSIGHT</span>
       </a>
       <a href="#releases" class="scroll">Releases</a>
       <a href="#story" class="scroll">Our Story</a>
@@ -710,35 +716,49 @@
       <div id="note-modal-body"></div>
     </div>
   </div>
-  
-  <section id="trailer-teaser" class="trailer-bar">
-    <div class="section-wrap trailer-bar-inner">
-      <div class="trailer-bar-copy">
-        <span class="chip">New</span>
-        <span class="chip">Early Access</span>
-        <h3 class="trailer-bar-title">Watch the LOON LIFE trailer</h3>
+
+  <section id="trailer-teaser" class="trailer-bar countdown-bar">
+    <div class="section-wrap trailer-bar-inner countdown-bar-inner">
+      <div class="trailer-bar-copy countdown-bar-copy">
+        <div class="reveal-kicker">Incoming Transmission</div>
+        <h3 class="trailer-bar-title reveal-title-mini" data-text="FARSIGHT">????????</h3>
         <p class="trailer-bar-sub">
-          A cozy island life-sim now available to explore in <strong>early access</strong>.
+          Something is coming. The signal gets stronger every day.
         </p>
-        <br>
-        <a href="trailer/" class="nav-trailer-btn">
-          <span class="nav-trailer-label">Watch full trailer →</span>
+
+        <a href="farsight/" class="nav-trailer-btn nav-farsight-btn" style="margin-top:10px;">
+          <span class="nav-trailer-label">Investigate →</span>
         </a>
       </div>
 
-      <div class="trailer-bar-media">
-        <div class="trailer-bar-video">
-          <video autoplay muted loop playsinline preload="metadata" poster="assets/trisento-poster.webp">
-            <source src="assets/loonlife-trailer.webm" type="video/webm" />
-          </video>
+      <div class="trailer-bar-media countdown-bar-media">
+        <div class="countdown countdown--compact" role="group" aria-label="Countdown">
+          <div class="cd-box">
+            <div class="cd-num" id="cdDays" data-shadow="00">00</div>
+            <div class="cd-label">Days</div>
+          </div>
+          <div class="cd-box">
+            <div class="cd-num" id="cdHours" data-shadow="00">00</div>
+            <div class="cd-label">Hours</div>
+          </div>
+          <div class="cd-box">
+            <div class="cd-num" id="cdMins" data-shadow="00">00</div>
+            <div class="cd-label">Minutes</div>
+          </div>
+          <div class="cd-box">
+            <div class="cd-num" id="cdSecs" data-shadow="00">00</div>
+            <div class="cd-label">Seconds</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+
   <footer class="footer">© <span id="year"></span> TRISENTO STUDIOS - All rights reserved.</footer>
 
   <script src="js/main.js?v=2" defer></script>
+  <script src="farsight/countdown.js?v=3" defer></script>
 </body>
 
 </html>
