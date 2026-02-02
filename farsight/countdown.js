@@ -120,9 +120,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 350);
   }
 
+  pulseGlitch();
+
   setInterval(() => {
     if (Math.random() < 0.45) pulseGlitch();
   }, 2000);
+
 });
 
 window.addEventListener("DOMContentLoaded", () => {

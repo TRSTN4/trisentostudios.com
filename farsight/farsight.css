@@ -679,3 +679,70 @@
 .countdown-bar .cd-num.glitching {
 	animation: digitGlitch 0.45s steps(2) infinite;
 }
+
+.countdown-bar {
+  position: fixed;
+  left: 50%;
+  bottom: clamp(10px, 3vh, 24px);
+  width: min(92vw, 980px);
+  transform: translate3d(-50%, 120%, 0);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 60;
+
+  background: rgba(5, 7, 12, 0.94);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, .75);
+  padding: 14px 14px;
+
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.countdown-bar.trailer-bar--visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate3d(-50%, 0, 0);
+}
+
+.countdown-bar--stack .countdown-bar-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.countdown-bar--stack .trailer-bar-sub {
+  margin: 0;
+  max-width: 60ch;
+}
+
+.countdown-bar-cta {
+  margin-top: 6px;
+}
+
+@media (max-width: 800px) {
+  .countdown-bar {
+    left: 10px;
+    right: 10px;
+    width: auto;
+    transform: translate3d(0, 120%, 0);
+  }
+
+  .countdown-bar.trailer-bar--visible {
+    transform: translate3d(0, 0, 0);
+  }
+
+  .countdown-bar--stack .countdown--compact {
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .countdown-bar--stack .nav-trailer-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
