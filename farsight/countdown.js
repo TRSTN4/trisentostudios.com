@@ -1,5 +1,5 @@
 (() => {
-  const REVEAL_EPOCH_SECONDS = 1770757200;
+  const REVEAL_EPOCH_SECONDS = 1770930000;
 
   const targetMs = REVEAL_EPOCH_SECONDS * 1000;
 
