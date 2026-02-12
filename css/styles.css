@@ -2268,135 +2268,22 @@ body.modal-open {
   margin-top: 10px;
 }
 
-.nav-farsight-btn::before {
-  background: conic-gradient(from 0deg,
-      #00ff88,
-      #00ffaa,
-      #6bff70,
-      #00ffaa,
-      #00ff88) !important;
+.chip-soon {
+	background: linear-gradient(135deg, #ff7a18, #ff3c00);
+	color: white;
+	font-weight: 600;
 }
 
-.nav-farsight-btn::after {
-  background:
-    radial-gradient(circle at 20% 0%, rgba(0, 255, 160, .18), transparent 55%),
-    rgba(7, 10, 15, 0.96) !important;
-  box-shadow: 0 0 18px rgba(0, 255, 160, .28) !important;
+.trailer-alpha-play--disabled {
+	background: linear-gradient(135deg, #ff512f, #dd2476);
+	color: white;
+	cursor: not-allowed;
+	opacity: 0.85;
+	box-shadow: none;
+	transform: none;
 }
 
-.nav-farsight-btn .nav-trailer-label {
-  animation: none !important;
-  text-shadow: 0 0 10px rgba(0, 255, 160, .55) !important;
-  color: #dfffee !important;
-}
-
-.nav-farsight-btn:hover,
-.nav-farsight-btn:focus-visible {
-  box-shadow: 0 0 24px rgba(0, 255, 160, .28) !important;
-}
-
-.countdown-bar-inner {
-  align-items: center;
-}
-
-.countdown-bar-copy {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-.countdown-bar-media {
-  flex: 0 0 auto;
-}
-
-.reveal-title-mini {
-  margin: 6px 0 4px;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-
-.countdown--compact {
-  max-width: 520px;
-  margin: 10px 0 0;
-  gap: 8px;
-}
-
-.countdown--compact .cd-box {
-  padding: 10px 8px;
-}
-
-.countdown--compact .cd-num {
-  font-size: clamp(18px, 2.6vw, 28px);
-}
-
-.countdown--compact .cd-label {
-  font-size: 10px;
-  letter-spacing: .14em;
-}
-
-@media (max-width: 640px) {
-  .countdown--compact {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 6px;
-    max-width: 100%;
-  }
-
-  .countdown--compact .cd-box {
-    padding: 10px 6px;
-  }
-
-  .countdown--compact .cd-num {
-    font-size: clamp(16px, 4.8vw, 22px);
-    letter-spacing: .03em;
-  }
-
-  .countdown--compact .cd-label {
-    font-size: 9px;
-  }
-}
-
-.countdown-bar-media {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.countdown--vertical {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: 220px;
-  max-width: 100%;
-}
-
-.countdown--vertical .cd-box {
-  width: 100%;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 10px 12px;
-}
-
-.countdown--vertical .cd-num {
-  font-size: 22px;
-  letter-spacing: .02em;
-}
-
-.countdown--vertical .cd-label {
-  font-size: 10px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  opacity: .85;
-}
-
-@media (max-width: 520px) {
-  .countdown--vertical {
-    width: 100%;
-  }
-}
-
-.countdown-bar .countdown--compact {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  align-items: stretch;
+.trailer-alpha-play--disabled:hover {
+	transform: none;
+	box-shadow: none;
 }
